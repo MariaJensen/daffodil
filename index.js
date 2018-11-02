@@ -1,10 +1,17 @@
+'use strict';
+
 const http = require('http');
+const express = require('express');
 
 const port = process.env.PORT || 3001;
 
-const server = http.createServer( (req, res) => {
-	res.end('test');
+const app = express();
+
+app.get('/', (req, res) => {
+	res.send('testing 1,2');
 });
 
-server.listen(port);
+app.listen(port, () => {
+	console.log(`Server listening on port ${port}`);
+});
 
