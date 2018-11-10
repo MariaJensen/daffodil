@@ -20,7 +20,6 @@ class Menu extends Component {
 				object
 					string text (text in menu item)
 					function component 
-					object componentProps
 					function handler (will be executed when menu item is clicked)
 		*/
 
@@ -205,7 +204,6 @@ function MenuItems(props) {
 				object
 					string text
 					function component
-					object componentProps
 					function handler
 		*	number width
 		*	string color
@@ -217,7 +215,6 @@ function MenuItems(props) {
 				<MenuItem 
 					text={object.text}
 					component={object.component}
-					componentProps={object.componentProps}
 					handler={object.handler}
 					width={props.width}
 					color={props.color}
@@ -233,7 +230,6 @@ function MenuItem(props) {
 	/**	props: 
 		* 	string text
 		* 	function component
-		*	object componentProps
 		*	function handler 
 		*	number width
 		*	string color
@@ -241,9 +237,9 @@ function MenuItem(props) {
 	*/
 	return(
 		<li 
-			onClick={ () => {props.handler(props.component, props.componentProps)}}
+			onClick={ () => {props.handler(props.component)}}
 			style={{
-				height: 52/62*props.width,
+				padding: 0.2*props.width,
 				color: props.color,
 				backgroundColor: props.backgroundColor,
 				border: `${5/62*props.width}px solid ${props.color}`,

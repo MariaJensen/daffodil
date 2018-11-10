@@ -37,7 +37,6 @@ class App extends Component {
     setComponent(component, componentProps) {
         this.setState({
             component: component,
-            componentProps: componentProps
         });
     }
 
@@ -46,11 +45,10 @@ class App extends Component {
             {
                 text: 'Kongekabale',
                 component: Kongekabale,
-                componentProps: {width: 0.8*this.state.windowWidth},
                 handler: this.setComponent,
             },
             {
-                text: 'Component1',
+                text: 'Component1Component1',
                 component: () => {return (<p>This is component 1</p>);},
                 handler: this.setComponent,
             },
@@ -85,7 +83,7 @@ class App extends Component {
                 />
                 {React.createElement(
                     this.state.component,
-                    this.state.componentProps
+                    {width: 0.8*this.state.windowWidth}
                 )}
             </div>
         );

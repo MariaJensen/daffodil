@@ -12,7 +12,7 @@ const suitCodes = [9829, 9824, 9830, 9827];
 class Kongekabale extends Component {
 
     /** props: 
-        *   
+        *   number width  
     */
 
     constructor(props) {
@@ -148,7 +148,6 @@ class Kongekabale extends Component {
     }
 
     render() {
-        
         const style = styling(this.props.width);
 
         const cards = this.state.deck.map( (card, index) => {
