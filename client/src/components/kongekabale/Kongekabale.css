@@ -1,0 +1,88 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+
+
+#wrapper {
+	margin: auto;    
+	display: grid;
+}
+
+header {
+	background-color: hsl(345, 15%, 30%);
+	color: hsl(30, 50%, 50%);
+	font-family: Mirza, sans-serif;
+	font-variant: small-caps;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#cardTable {
+	display: grid;
+	grid-template-columns: repeat(14, 14fr);
+	grid-template-rows: repeat(4, 4fr);
+	background-color: hsl(345, 15%, 30%);
+	position: relative;
+}
+
+.card {
+	background-color: hsl(40, 40%, 80%);
+}
+
+.hearts {
+	color: red;
+}
+.spades {
+	color: black;
+}
+.diams {
+	color: red;
+}
+.clubs {
+	color: black;
+}
+
+.selected {
+	margin-left: 10%;
+	margin-right: -10%;
+	margin-top: -10%;
+	margin-bottom: 10%;
+}
+
+#bar {
+	display: flex;
+}
+
+.button {
+	background-color: hsl(345, 15%, 30%);
+	color: hsl(30, 50%, 50%);
+	font-family: Mirza, sans-serif;
+	margin-right: 2%;
+	flex-grow: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.button:last-child {
+	margin-right: 0;
+}
+
+.message {
+	color: red;
+	font-family: Mirza, sans-serif;
+	position: absolute;
+	background-color: hsl(30, 100%, 75%);
+	border-color: red;
+	border-style: solid;
+}
+
+.message > ul {
+}
+
+.message > ul > ul {
+	list-style: circle inside;
+}
