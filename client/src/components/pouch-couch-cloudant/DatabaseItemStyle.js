@@ -9,7 +9,9 @@ const style = (width) => {
 			gridTemplateColumns: `10% auto`,
 			gridTemplateRows: 'auto auto auto',
 			gridRowGap: 0.01*width,
+			alignItems: 'center',
 			position: 'relative',
+			fontSize: 0.015*width,
 		},
 		closeIcon: {
 			position: 'absolute',
