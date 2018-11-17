@@ -8,10 +8,11 @@ const style = (width) => {
 			padding: 0.03*width,
 			gridTemplateColumns: `10% auto`,
 			gridTemplateRows: 'auto auto auto',
-			gridRowGap: 0.01*width,
+			gridRowGap: 0.015*width,
+			gridColumnGap: 0.015*width,
 			alignItems: 'center',
 			position: 'relative',
-			fontSize: 0.015*width,
+			fontSize: 0.02*width,
 		},
 		closeIcon: {
 			position: 'absolute',
