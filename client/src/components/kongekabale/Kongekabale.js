@@ -148,7 +148,7 @@ class Kongekabale extends Component {
     }
 
     render() {
-        const style = styling(this.props.width);
+        const style = styling(0.8*this.props.width);
 
         const cards = this.state.deck.map( (card, index) => {
 

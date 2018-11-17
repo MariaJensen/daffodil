@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import Menu from './components/menu/Menu.js';
 import Kongekabale from './components/kongekabale/Kongekabale.js';
+import Pouch from './components/pouch-couch-cloudant/Pouch.js';
+
+const color = 'hsl(180, 50%, 20%';
+const backgroundColor = 'hsl(180, 10%, 70%)';
 
 class App extends Component {
 
@@ -9,7 +13,7 @@ class App extends Component {
         super(props);
 
         this.state = {
-            component: () => <p>Welcome</p>,
+            component: Pouch,
             windowWidth: window.innerWidth,
             windowHeight: window.innerHeight,
         };
@@ -48,20 +52,11 @@ class App extends Component {
                 handler: this.setComponent,
             },
             {
-                text: 'Component1Component1',
-                component: () => {return (<p>This is component 1</p>);},
+                text: 'Pouch',
+                component: Pouch,
                 handler: this.setComponent,
             },
-            {
-                text: 'Component2',
-                component: () => {return (<p>This is component 2</p>);},
-                handler: this.setComponent,
-            },
-            {
-                text: 'Component3',
-                component: () => {return (<p>This is component 3</p>);},
-                handler: this.setComponent,
-            }
+            
         ];
     }
 
@@ -71,19 +66,24 @@ class App extends Component {
                 style={{
                     width: 0.8*this.state.windowWidth,
                     margin: 'auto',
+                    marginTop: 0.01*this.state.windowWidth,
                 }}
             >
                 <Menu
                     width={0.05*this.state.windowWidth}
-                    top={0}
-                    left={0}
-                    color={'red'}
-                    backgroundColor={'pink'} 
+                    top={0.01*this.state.windowWidth}
+                    left={0.01*this.state.windowWidth}
+                    color={color}
+                    backgroundColor={backgroundColor}
                     components={this.components()}
                 />
                 {React.createElement(
                     this.state.component,
-                    {width: 0.8*this.state.windowWidth}
+                    {
+                        width: this.state.windowWidth,
+                        color: color,
+                        backgroundColor: backgroundColor,
+                    }
                 )}
             </div>
         );

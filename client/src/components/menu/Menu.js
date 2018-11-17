@@ -213,6 +213,7 @@ function MenuItems(props) {
 		<React.Fragment>
 			{props.components.map( (object) => 
 				<MenuItem 
+					key={object.text}
 					text={object.text}
 					component={object.component}
 					handler={object.handler}
