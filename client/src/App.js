@@ -3,8 +3,9 @@ import './App.css';
 import Menu from './components/menu/Menu.js';
 import Kongekabale from './components/kongekabale/Kongekabale.js';
 import Pouch from './components/pouch-couch-cloudant/Pouch.js';
+import Frida from './components/frida/Frida.js';
 
-const color = 'hsl(180, 50%, 20%';
+const color = 'hsl(180, 10%, 25%)';
 const backgroundColor = 'hsl(180, 10%, 70%)';
 
 class App extends Component {
@@ -13,7 +14,7 @@ class App extends Component {
         super(props);
 
         this.state = {
-            component: Pouch,
+            component: Frida,
             windowWidth: window.innerWidth,
             windowHeight: window.innerHeight,
         };
@@ -56,7 +57,11 @@ class App extends Component {
                 component: Pouch,
                 handler: this.setComponent,
             },
-            
+            {
+                text: 'Frida',
+                component: Frida,
+                handler: this.setComponent,
+            },
         ];
     }
 

@@ -1,0 +1,112 @@
+Energi
+Protein, total
+total-N
+Fedt, total
+mættede fedtsyrer
+monoumætt. fedtsyrer
+polyumætt. fedtsyrer
+Kulhydrat, total
+kulhydrat, tilgængelig
+tilsat sukker
+kostfibre
+Alkohol
+Aske
+Vand
+A-vitamin
+Retinol
+ß-caroten
+D-vitamin
+D3 cholecalciferol
+D2 ergocalciferol
+25-hydroxycholecalciferol
+E-vitamin
+alfa-tokoferol
+K-vitamin
+B1-vitamin, thiamin
+B2-vitamin, riboflavin
+Niacin
+niacin
+tryptofans bidrag
+B6-vitamin
+Pantothensyre
+Biotin
+Folat
+B12-vitamin
+C-vitamin
+L-ascorbinsyre
+L-dehydroascorbinsyre
+Natrium, Na
+Kalium, K
+Calcium, Ca
+Magnesium, Mg
+Phosphor, P
+Jern, Fe
+Kobber, Cu
+Zink, Zn
+Jod, I
+Mangan, Mn
+Chrom, Cr 
+Selen, Se
+Nikkel, Ni
+Fructose
+Glucose
+Lactose
+Maltose
+Saccharose
+Sukkerarter, ialt
+Stivelse
+Kostfibre, total (AOAC)
+C4:0
+C6:0
+C8:0
+C10:0
+C12:0
+C14:0
+C15:0
+C16:0
+C17:0
+C18:0
+C20:0
+C22:0
+C24:0
+C14:1, n-5
+C16:1, n-7
+C18:1, n-9
+C18:1, n-7
+C20:1, n-11
+C22:1, n-9
+C22:1, n-11
+C24:1, n-9
+C18:2, n-6
+C18:3, n-3
+C18:4, n-3
+C20:4, n-6
+C20:5, n-3
+C22:5, n-3
+C22:6, n-3
+Andre fedtsyrer
+Sum mættede
+Sum monoumættede
+Sum polyumættede
+Sum n-3 fedtsyrer
+Sum n-6 fedtsyrer
+Transfedtsyrer, total
+Cholesterol
+Isoleucin
+Leucin
+Lysin
+Methionin
+Cystin
+Phenylalanin
+Tyrosin
+Threonin
+Tryptofan
+Valin
+Arginin
+Histidin
+Alanin
+Asparaginsyre
+Glutaminsyre
+Glycin
+Prolin
+Serin

@@ -13,7 +13,7 @@ class LocalDatabase extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			localDb: new PouchDB('localDb'),
+			localDb: new PouchDB('test'),
 			docs: new Map(),
 			changes: {},
 		};

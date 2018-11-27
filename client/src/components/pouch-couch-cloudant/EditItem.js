@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import EditIcon from '../icons/EditIcon.js';
-import CloseIcon from '../icons/CloseIcon.js';
 
 class EditItem extends Component {
 

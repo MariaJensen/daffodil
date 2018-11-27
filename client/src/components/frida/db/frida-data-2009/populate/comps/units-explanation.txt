@@ -1,0 +1,6 @@
+g	gram
+mg	milligram
+μg	microgram
+RE	retinol equivalents
+aTE	alfa-tocopherol equivalents
+NE	niacin equivalents

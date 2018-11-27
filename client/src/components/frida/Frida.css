@@ -1,0 +1,50 @@
+
+
+/* gudea-regular - latin_latin-ext */
+@font-face {
+  font-family: 'Gudea';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/gudea/gudea-v7-latin_latin-ext-regular.eot'); /* IE9 Compat Modes */
+  src: local('Gudea'),
+       url('../fonts/gudea/gudea-v7-latin_latin-ext-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/gudea/gudea-v7-latin_latin-ext-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/gudea/gudea-v7-latin_latin-ext-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/gudea/gudea-v7-latin_latin-ext-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/gudea/gudea-v7-latin_latin-ext-regular.svg#Gudea') format('svg'); /* Legacy iOS */
+}
+
+/* gudea-italic - latin_latin-ext */
+@font-face {
+  font-family: 'Gudea';
+  font-style: italic;
+  font-weight: 400;
+  src: url('../fonts/gudea/gudea-v7-latin_latin-ext-italic.eot'); /* IE9 Compat Modes */
+  src: local('Gudea Italic'), local('Gudea-Italic'),
+       url('../fonts/gudea/gudea-v7-latin_latin-ext-italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/gudea/gudea-v7-latin_latin-ext-italic.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/gudea/gudea-v7-latin_latin-ext-italic.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/gudea/gudea-v7-latin_latin-ext-italic.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/gudea/gudea-v7-latin_latin-ext-italic.svg#Gudea') format('svg'); /* Legacy iOS */
+}
+
+/* gudea-700 - latin_latin-ext */
+@font-face {
+  font-family: 'Gudea';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/gudea/gudea-v7-latin_latin-ext-700.eot'); /* IE9 Compat Modes */
+  src: local('Gudea Bold'), local('Gudea-Bold'),
+       url('../fonts/gudea/gudea-v7-latin_latin-ext-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/gudea/gudea-v7-latin_latin-ext-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/gudea/gudea-v7-latin_latin-ext-700.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/gudea/gudea-v7-latin_latin-ext-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/gudea/gudea-v7-latin_latin-ext-700.svg#Gudea') format('svg'); /* Legacy iOS */
+}
+
+
+#test {
+  font-family: 'Gudea';
+  font-style: normal;
+  font-weight: 400;
+}

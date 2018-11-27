@@ -1,0 +1,17 @@
+01	Milk and milk products 	Konsummælk og mælkekonserves
+02	Cheese and cheese products 	Ost og osteprodukter
+03	Ice cream, fruit ice and other ice 	Konsumis
+04	Grains, cereals and cereal products 	Korn og stivelsesprodukter
+05	Vegetables and vegetable products 	Grønsager og grønsagsprodukter
+06	Fruit and fruit products 	Frugt og frugtprodukter
+07	Meat and meat products 	Kød og kødprodukter
+08	Fish and fish products 	Fisk og fiskeprodukter
+09	Poultry and poultry products 	Fjerkræ og fjerkræprodukter
+10	Eggs and egg products 	Æg og ægprodukter
+11	Fats, oils and their products 	Fedtsoffer og fedtstofprodukter
+12	Sugar, honey and products thereof 	Sukker, honning og sukkervarer
+13	Beverages 	Drikkevarer
+14	Spices and other ingredients 	Krydderier og andre hjælpestoffer
+15	Mixed foods 	Sammensatte levnedsmidler
+16	Foods for special nutritional use 	Levnedsmidler til særlig ernæring
+17	Other foods 	Andre levnedsmidler

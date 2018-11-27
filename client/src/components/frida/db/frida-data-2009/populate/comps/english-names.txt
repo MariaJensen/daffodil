@@ -1,0 +1,112 @@
+Energy
+Protein, total
+total-N
+Fat, total
+saturated fatty acids
+monounsaturated fatty acids
+polyunsaturated fatty acids
+Carbohydrate, total
+carbohydrate, available
+added sugar
+dietary fibre
+Alcohol
+Ash
+Moisture
+Vitamin A
+retinol
+ß-carotene
+Vitamin D
+D3 cholecalciferol
+D2 ergocalciferol
+25-hydroxycholecalciferol
+Vitamin E
+alpha-tocopherol
+Vitamin K
+Vitamin B1, thiamin
+Vitamin B2, riboflavin
+Niacin equivalents
+niacin
+tryptophan
+Vitamin B6
+Pantothenic Acid
+Biotin
+Folates
+Vitamin B12
+Vitamin C
+L-Ascorbic Acid
+L-Dehydroascorbic acid
+Sodium, Na
+Potassium, K
+Calcium, Ca
+Magnesium, Mg
+Phosphorus, P
+Iron, Fe
+Copper, Cu
+Zinc, Zn
+Iodine, I
+Manganese, Mn
+Chromium, Cr 
+Selenium, Se
+Nickel, Ni
+Fructose
+Glucose
+Lactose
+Maltose
+Saccharose
+All sugars, total
+Starch
+Dietary fibre, total (AOAC)
+C 4:0
+C 6:0
+C 8:0
+C 10:0
+C 12:0
+C 14:0
+C 15:0
+C 16:0
+C 17:0
+C 18:0
+C 20:0
+C 22:0
+C 24:0
+C 14:1
+C 16:1
+C 18:1, n-9
+C 18:1, cis n-7
+C 20:1, n-11
+C 22:1, n-9
+C 22:1, n-11
+C 24:1, n-9
+C 18:2, n-6
+C 18:3, n-3
+C 18:4, n-3
+C 20:4, n-6
+C 20:5, n-3
+C 22:5, n-3
+C 22:6, n-3
+Other fatty acids
+Sum saturated
+Sum monounsaturated
+Sum polyunsaturated
+Sum n-3 fatty acids
+Sum n-6 fatty acids
+Trans fatty acids
+Cholesterol
+Isoleucin
+Leucine
+Lysine
+Methionine
+Cystine
+Phenylalanine
+Tyrosine
+Threonine
+Tryptophan
+Valine
+Arginine
+Histidine
+Alanine
+Aspartic acid
+Glutamic acid
+Glycine
+Proline
+Serine
