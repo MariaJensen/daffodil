@@ -25,20 +25,26 @@ class DisplayFood extends Component {
 	}
 
 	async componentDidMount() {
-		console.log('DisplayFood did mount');
 
-		const replication = await this.props.localDb.replicate.from(this.props.remoteDb, {doc_ids: [this.props.foodId]});
-
-		if (!replication.ok) {
-			// TODO: Handle error
+		try {
+			const replication = await this.props.localDb.replicate.from(this.props.remoteDb, {doc_ids: [this.props.foodId]});
 			console.log(replication);
+		} catch(err) {
+			console.log(err);
+			// alert('DisplayFood: No access to remote db, proceeding');
 		}
+		
+		try {	
+			this.food = await this.props.localDb.get(this.props.foodId);
 
-		this.food = await this.props.localDb.get(this.props.foodId);
-
-		this.setState({
-			currentContents: new Map(this.food.contents),
-		});
+			this.setState({
+				currentContents: new Map(this.food.contents),
+			});
+		} catch(err) {
+			console.log(err);
+			// alert("DisplayFood: local db does not store relevant data, can't proceed");
+		}
+		
 	}
 
 	styleMemo = memoize( width => styleFunction(width))
@@ -53,25 +59,49 @@ class DisplayFood extends Component {
 	}
 
 	render() {
-		console.log(this.state.currentContents);
+
+		console.log('props: ', this.props);
+		console.log('state: ', this.state);
 
 		if (!this.props.foodName) {return null;}
+
 		const style = this.styleMemo(this.props.width);
 
 		return(
-		<div style={style} >
-			<h1>{this.props.foodName.nameDan}</h1>
-			<form>
-				<label>
-						Indhold i <input 
-							type="number" 
-							min="1"
-							value={this.state.amount} 
-							onChange={this.changeHandler}
-						/> gram:
-				</label>
-			</form>
-		</div>
+			<div style={style} >
+				<h1>{this.props.foodName.nameDan}</h1>
+				<form>
+					<label>
+							Indhold i <input 
+								type="number" 
+								min="1"
+								value={this.state.amount} 
+								onChange={this.changeHandler}
+							/> gram:
+					</label>
+				</form>
+				<div style={{
+					display: 'grid',
+					gridTemplateColumns: '25% 10% 10%',
+				}}>
+					{[...this.props.comp.keys()].map( key => {
+						
+						const nameDan = this.props.comp.get(key).nameDan;
+						const nameEng = this.props.comp.get(key).nameEng;
+						const unit = this.props.comp.get(key).unit;
+						const content = this.state.currentContents.get(key) || 0;
+
+						return(
+							<React.Fragment>
+								<p>{nameDan}:</p>
+								<p>{content}</p> 
+								<p>{unit}</p>
+							</React.Fragment>
+						);
+					})}
+
+				</div>
+			</div>
 
 		);
 	

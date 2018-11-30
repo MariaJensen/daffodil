@@ -21,35 +21,40 @@ class Frida extends Component {
 
 	async componentDidMount() {
 
-		const replication = await PouchDB.replicate(
-			this.remoteDb, 
-			this.localDb, 
-			{doc_ids: ['comp', 'foodGroup', 'foodName'],}
-		);
-
-		if (!replication.ok) {
-			// Handle error
-			// Check if localDb already has sufficient data for app to run
+		try {
+			const replication = await PouchDB.replicate(
+				this.remoteDb, 
+				this.localDb, 
+				{doc_ids: ['comp', 'foodGroup', 'foodName'],}
+			);		
 			console.log(replication);
-		}		
+		} catch(err) {
+			console.log(err);
+			// alert('Frida: no access to remote db, proceeding');
+		}
 
-		const res = await this.localDb.allDocs({
-			keys: ['comp', 'foodGroup', 'foodName'],
-			include_docs: true,
-		});
+		try{
+			const res = await this.localDb.allDocs({
+				keys: ['comp', 'foodGroup', 'foodName'],
+				include_docs: true,
+			});
 
-		this.comp = new Map(res.rows[0].doc.comp);
+			this.comp = new Map(res.rows[0].doc.comp);
 
-		this.foodGroup = res.rows[1].doc.foodGroup.map( arr => {
-			const doc = arr[1];
-			doc.subgroupsDan = new Map(doc.subgroupsDan);
-			doc.subgroupsEng = new Map(doc.subgroupsEng);
-			return [arr[0], doc];
-		});
+			this.foodGroup = res.rows[1].doc.foodGroup.map( arr => {
+				const doc = arr[1];
+				doc.subgroupsDan = new Map(doc.subgroupsDan);
+				doc.subgroupsEng = new Map(doc.subgroupsEng);
+				return [arr[0], doc];
+			});
 
-		this.foodName = new Map(res.rows[2].doc.foodName);
+			this.foodName = new Map(res.rows[2].doc.foodName);
 
-		this.forceUpdate();
+			this.forceUpdate();
+		} catch(err) {
+			console.log(err);
+			// alert("Frida: local db does not store relevant date, can't proceed");
+		}
 	}
 
 	compGroup = {
@@ -62,9 +67,7 @@ class Frida extends Component {
 		};	
 
 	render() {	
-
-		console.log(process.env.DB_HOSTNAME);
-		const foodId = '5';
+		const foodId = '11';
 
 		return (
 			<div id="test">
