@@ -5,6 +5,8 @@
   "dependencies": {
     "memoize-one": "^4.0.3",
     "pouchdb": "^7.0.0",
+    "pouchdb-find": "^7.0.0",
+    "pouchdb-quick-search": "^1.3.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-scripts": "2.1.1"

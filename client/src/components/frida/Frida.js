@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import PouchDB from 'pouchdb';
+import PouchDBFind from 'pouchdb-find';
+import PouchDBQuickSearch from 'pouchdb-quick-search';
 import './Frida.css';
-import DisplayFood from './DisplayFood.js';
+import ChooseFood from './ChooseFood.js';
+
+PouchDB.plugin(PouchDBFind);
+PouchDB.plugin(PouchDBQuickSearch);
 
 class Frida extends Component {
 
@@ -11,73 +16,18 @@ class Frida extends Component {
 		*	String backgroundColor
 		*/
 
-	localDb = new PouchDB('localDb');
-	
+	localDb = new PouchDB('localDb');	
 	remoteDb = new PouchDB('https://6a8eaf67-8494-4cc6-8fba-d69263b15078-bluemix.cloudant.com/frida2009');
 
-	comp = new Map();
-	foodGroup = new Map();
-	foodName = new Map();
-
 	async componentDidMount() {
-
-		try {
-			const replication = await PouchDB.replicate(
-				this.remoteDb, 
-				this.localDb, 
-				{doc_ids: ['comp', 'foodGroup', 'foodName'],}
-			);		
-			console.log(replication);
-		} catch(err) {
-			console.log(err);
-			// alert('Frida: no access to remote db, proceeding');
-		}
-
-		try{
-			const res = await this.localDb.allDocs({
-				keys: ['comp', 'foodGroup', 'foodName'],
-				include_docs: true,
-			});
-
-			this.comp = new Map(res.rows[0].doc.comp);
-
-			this.foodGroup = res.rows[1].doc.foodGroup.map( arr => {
-				const doc = arr[1];
-				doc.subgroupsDan = new Map(doc.subgroupsDan);
-				doc.subgroupsEng = new Map(doc.subgroupsEng);
-				return [arr[0], doc];
-			});
-
-			this.foodName = new Map(res.rows[2].doc.foodName);
-
-			this.forceUpdate();
-		} catch(err) {
-			console.log(err);
-			// alert("Frida: local db does not store relevant date, can't proceed");
-		}
+		const replication = await PouchDB.replicate(this.remoteDb, this.localDb); 
 	}
 
-	compGroup = {
-			aminoAcids: ['236', '237', '238', '239', '240', '241', '242', '243', '244', '245', '246', '247', '248', '249', '250', '251', '252', '253'],
-			fattyAcids: {
-				saturated: ['174', '175', '176', '177', '178', '179', '180', '181', '182', '183', '184', '185', '186'],
-				monoUnsaturated: ['189', '191', '193', '194', '197', '198', '200', '257'],
-				polyUnsaturated: ['203', '206', '208', '211', '212', '214', '215'],
-			}
-		};	
-
 	render() {	
-		const foodId = '11';
-
 		return (
 			<div id="test">
-				<DisplayFood
-					width={this.props.width}
-					foodId={foodId}
+				<ChooseFood 
 					localDb={this.localDb}
-					remoteDb={this.remoteDb}
-					comp={this.comp}
-					foodName={this.foodName.get(foodId)}
 				/>
 			</div>
 		);
@@ -85,3 +35,13 @@ class Frida extends Component {
 }
 
 export default Frida; 
+
+
+// 	compGroup = {
+	// 		aminoAcids: ['236', '237', '238', '239', '240', '241', '242', '243', '244', '245', '246', '247', '248', '249', '250', '251', '252', '253'],
+	// 		fattyAcids: {
+	// 		saturated: ['174', '175', '176', '177', '178', '179', '180', '181', '182', '183', '184', '185', '186'],
+	// 		monoUnsaturated: ['189', '191', '193', '194', '197', '198', '200', '257'],
+	// 		polyUnsaturated: ['203', '206', '208', '211', '212', '214', '215'],
+	// 	}
+	// };	
