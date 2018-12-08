@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PouchDB from 'pouchdb';
 import PouchDBFind from 'pouchdb-find';
 import './Frida.css';
-
 import SearchFoods from './SearchFoods.js';
+import SearchFoods2 from './SearchFoods2.js';
 
 PouchDB.plugin(PouchDBFind);
 
@@ -111,7 +111,11 @@ class Frida extends Component {
 			console.log('localDb sufficiently populated');
 			this.frida = localDb;
 			this.setState({ 
-				currentComponent: <SearchFoods frida={this.frida} />
+				currentComponent: 
+					(<React.Fragment>
+						<SearchFoods2 frida={this.frida} />
+						<SearchFoods frida={this.frida} />
+					</React.Fragment>)
 			}); 
 		}
 
@@ -121,7 +125,11 @@ class Frida extends Component {
 				console.log('Replication successful');
 				this.frida = localDb;
 				this.setState({
-					currentComponent: <SearchFoods frida={this.frida} />
+					currentComponent: 
+						(<React.Fragment>
+							<SearchFoods2 frida={this.frida} />
+							<SearchFoods frida={this.frida} />
+						</React.Fragment>)
 				});
 			}
 		})
@@ -199,7 +207,84 @@ class Frida extends Component {
 		window.addEventListener('online', this.handleOnline);
 		window.addEventListener('offline', this.handleOffline);
 
-		this.initializeDb();		
+		await this.initializeDb();		
+
+		if (this.frida.adapter === 'idb') {
+			
+			try {
+
+				const getDoc = await this.frida.get('_design/nameDanSubstrings');		
+				console.log(getDoc);		
+
+				// const removeDoc = await this.frida.remove(getDoc);
+				// console.log(removeDoc);
+
+				const query = await this.frida.query('nameDanSubstrings/nameDanSubstrings');
+				console.log(query);
+			
+			} catch(err) {
+			
+				if (err.status === 404) {	// ddoc does not exist in db
+			
+					let emit;
+			
+					function map(doc) {
+
+						const g = (s, n) => {
+
+							/**	*	parameters: 
+									*	s 	non-empty string
+									*	n 	positive integer, n <= s.length
+								*	returns: Set containing all substrings of s that have length n
+								*/
+
+							// if (typeof s !== 'string' || !s || typeof n !== 'number' || !Number.isInteger(n) || n < 1 || n > s.length) {
+							// 	throw new Error('Function substrings: Bad argument');
+							// }
+							
+							const N = s.length;
+							const S = new Set();
+
+							let i = 0;
+
+							while (i + n -1 < N) {
+								S.add(s.substring(i, i+n).toLowerCase());
+								i = i+1
+							}
+
+							return S;
+						};
+
+						const re = /[\s,()\-,/]/;	// substrings containing one of these will not be emitted
+
+						if (doc.nameDan) {
+							const L = doc.nameDan.length;
+							
+							for (let l=1; l<=L; l++ ) {
+								g(doc.nameDan, l)
+								.forEach( s => {
+									if (re.test(s)) {
+										return;
+									}
+									emit(s, doc.nameDan);
+								});
+							}
+						}
+					}
+					const ddoc = {
+						_id: '_design/nameDanSubstrings',
+						views: {
+							nameDanSubstrings: {map: map.toString()}
+						}
+					};
+					try {
+						await this.frida.put(ddoc);
+					} catch(err) {
+						console.log(err);
+					}
+				}
+			}	
+		}
 	}
 
 	componentWillUnmount() {
@@ -212,7 +297,6 @@ class Frida extends Component {
 		return (
 			<div id="wrapper">
 				{this.state.currentComponent}
-				
 			</div>
 		
 		);

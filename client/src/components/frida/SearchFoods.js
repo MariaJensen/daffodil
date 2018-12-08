@@ -5,6 +5,8 @@ import('pouchdb-find').then(module => {PouchDB.plugin(module)});
 
 class SearchFoods extends Component {
 
+	// TODO: Use startkey/endkey pattern instead of limit/skip
+
 	/**	props:
 		*	Object 	frida	(food database)
 		*/
@@ -18,19 +20,23 @@ class SearchFoods extends Component {
 			fetchedAll: false,
 		};
 		this.changeHandler = this.changeHandler.bind(this);
+		this.searchHandler = this.searchHandler.bind(this);
 		this.showMoreHandler = this.showMoreHandler.bind(this);
 	}
 
 	async changeHandler(event) {
-		const str = event.target.value;
+		this.setState({
+			inputField: event.target.value,
+		});
+	}
+
+	async searchHandler(event) {
+
+		event.preventDefault();
+
+		const str = this.state.inputField;
 
 		if (!str) {
-			this.setState({
-				inputField: str,
-				matches: [],
-				lastFetchedId: null,
-				fetchedAll: false,
-			});
 			return;
 		}
 
@@ -46,7 +52,6 @@ class SearchFoods extends Component {
 		const matches = res.docs;
 
 		const lastIndex = matches.length - 1; 
-		console.log(lastIndex);
 
 		if (lastIndex === -1) {
 			this.setState({
@@ -74,7 +79,7 @@ class SearchFoods extends Component {
 			matches: matches,
 			lastFetchedId: matches[lastIndex]._id,
 			fetchedAll: false,
-		})
+		});
 	}
 
 	async showMoreHandler() {
@@ -131,8 +136,12 @@ class SearchFoods extends Component {
 	render() {
 	
 		return (
-			<div>
-				<form>
+			<div style={{
+				border: '4px dotted orange',
+				padding: 20,
+			}} >
+				<h2>Search 1</h2>
+				<form onSubmit={this.searchHandler} >
 					<label>
 						Search for food: 
 						<input 
@@ -141,6 +150,7 @@ class SearchFoods extends Component {
 							onChange={this.changeHandler}
 						/>
 					</label>
+					<input type="submit" value="Search" />
 				</form>
 				<ul>
 					{this.state.matches.map(doc => {
@@ -148,9 +158,9 @@ class SearchFoods extends Component {
 					})}
 				</ul>
 				{ (this.state.matches.length > 0) && (!this.state.fetchedAll) && 
-					<button
-						onClick={this.showMoreHandler}
-					>Show more</button>
+					<button onClick={this.showMoreHandler} >
+						Show more
+					</button>
 				}
 				{(this.state.matches.length === 0) && (this.state.fetchedAll) && <p>No matches</p>}
 			</div>
