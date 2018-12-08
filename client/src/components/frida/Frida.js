@@ -219,8 +219,8 @@ class Frida extends Component {
 				// const removeDoc = await this.frida.remove(getDoc);
 				// console.log(removeDoc);
 
-				const query = await this.frida.query('nameDanSubstrings/nameDanSubstrings');
-				console.log(query);
+				// const query = await this.frida.query('nameDanSubstrings/nameDanSubstrings');
+				// console.log(query);
 			
 			} catch(err) {
 			
@@ -279,6 +279,9 @@ class Frida extends Component {
 					};
 					try {
 						await this.frida.put(ddoc);
+
+						const query = await this.frida.query('nameDanSubstrings/nameDanSubstrings');
+						console.log(query);
 					} catch(err) {
 						console.log(err);
 					}
